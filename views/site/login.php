@@ -5,26 +5,24 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <link type="text/css" rel="stylesheet" href="../../public/style/main.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"/>
-    <title>Document</title></head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../../public/style/main.css">
+    <title>Login</title></head>
 <body>
-
-<div class="container">
+<div class="d-flex justify-content-center">
     <div class="form-container">
-        <h2 class="auth-form">Регистрация/Вход</h2>
+        <h2 class="auth-form-text">Регистрация/Вход</h2>
         <?php
         if (!app()->auth::check()):
         ?>
         <form method="post">
-            <label><input type="text" class="text-input" required name="login" placeholder="Login"></label>
-            <label><input type="password" class="text-input" required name="password" placeholder="Login"></label>
-            <input class="input-button" type="submit" value="Submit">
+            <label><input type="text" class="form-control" required name="login" placeholder="Login"></label><br>
+            <label><input type="password" class="form-control" required name="password" placeholder="Login"></label><br>
+            <button class="btn btn-default" type="submit" value="Submit">Submit</button>
         </form>
     </div>
 </div>
-
-
 </body>
 </html>
 
