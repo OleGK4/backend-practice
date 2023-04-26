@@ -1,17 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main site</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../site/style/main.css">
+    <title>Pop it MVC</title>
 </head>
 <body>
+<header>
+    <nav class="nav-bar">
+        <button class="nav-bar-button">
+            <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
+        </button>
+        <button class="nav-bar-button">
+            <a href="<?= app()->route->getUrl('/login') ?>">Группы</a>
+        </button>
+        <button class="nav-bar-button">
+            <a href="<?= app()->route->getUrl('/login') ?>">Предметы</a>
+        </button>
+        <?php
+        if (!app()->auth::check()):
+        ?>
+        <button class="nav-bar-button">
+            <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
+        </button>
+        <button class="nav-bar-button">
+            <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
+        </button>
 
-<div>
-    <?= $content ?? ''; ?>
-</div>
+        <?php
+        else:
+        ?>
+        <div class="nav-bar-button">
+            <a href="<?= app()->route->getUrl('/logout') ?>">Выход(<?= app()->auth::user()->name ?>)</a>
+    </nav>
+    <?php
+    endif;
+    ?>
+</header>
+<main>
+    <?= $content ?? '' ?>
+</main>
 
 </body>
 </html>
