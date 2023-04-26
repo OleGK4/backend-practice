@@ -31,8 +31,9 @@
         <?php
         else:
         ?>
-        <div class="nav-bar-button">
+        <button class="nav-bar-button">
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход(<?= app()->auth::user()->name ?>)</a>
+        </button>
     </nav>
     <?php
     endif;
