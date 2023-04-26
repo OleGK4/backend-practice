@@ -5,8 +5,8 @@
 <!doctype html>
 <html lang="ru">
 <head>
+    <link type="text/css" rel="stylesheet" href="../../public/style/main.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style/main.css">
     <title>Document</title></head>
 <body>
 

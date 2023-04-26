@@ -6,12 +6,10 @@ body {
     font-size: 14px;
     width: 100%;
     height: 1080px;
-    background-color: red;
     padding: 10px 10px;
 }
 header{
     display: flex;
-    background-color: black;
     width: 1080px;
     height: 300px;
 }

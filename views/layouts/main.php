@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="../../public/style/main.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="../site/style/main.css">
     <title>Pop it MVC</title>
 </head>
 <body>
