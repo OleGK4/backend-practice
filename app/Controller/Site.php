@@ -27,7 +27,7 @@ class Site
         if ($request->method === 'POST' && User::create($request->all())) {
             app()->route->redirect('/todirect');
         }
-        return new View('site.signup');
+        return new View('site.auth.signup');
     }
 
     public function login(Request $request): string
