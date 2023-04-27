@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <title>Registration</title></head>
+    <title>Login</title></head>
 <body>
 <div class="d-flex justify-content-center">
     <div class="form-container">
@@ -12,8 +12,7 @@
         <form method="post">
             <label><input type="text" class="form-control" required name="login" placeholder="Login"></label><br>
             <label><input type="password" class="form-control" required name="password" placeholder="Password"></label><br>
-            <label><input type="text" class="form-control" required name="name" placeholder="Name"></label><br>
-            <button class="btn btn-warning" type="submit" value="Submit">Регистрация</button>
+            <button class="btn btn-warning" type="submit" value="Submit">Вход</button>
         </form>
     </div>
 </div>

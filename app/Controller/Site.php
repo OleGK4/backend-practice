@@ -17,10 +17,15 @@ class Site
         return (new View())->render('site.post', ['posts' => $posts]);
     }
 
+    public function todirect(): string
+    {
+        return (new View())->render('site.todirect');
+    }
+
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
-            app()->route->redirect('/go');
+            app()->route->redirect('/todirect');
         }
         return new View('site.signup');
     }
@@ -29,11 +34,11 @@ class Site
     {
         //Если просто обращение к странице, то отобразить форму
         if ($request->method === 'GET') {
-            return new View('site.login');
+            return new View('site.auth.login');
         }
         //Если удалось аутентифицировать пользователя, то редирект
         if (Auth::attempt($request->all())) {
-            app()->route->redirect('/hello');
+            app()->route->redirect('/todirect');
         }
         //Если аутентификация не удалась, то сообщение об ошибке
         return new View('site.login', ['message' => 'Неправильные логин или пароль']);
@@ -42,7 +47,7 @@ class Site
     public function logout(): void
     {
         Auth::logout();
-        app()->route->redirect('/hello');
+        app()->route->redirect('/login');
     }
 
     public function hello(): string
