@@ -9,7 +9,9 @@
         <div class="row">
             <div class="col-sm">
                 <h2 class="block-header-h2">Группа №</h2>
-                <h2 class="block-header-h2-yellow">411</h2>
+                <h2 class="block-header-h2-yellow">
+                    <?= $group->name; ?>
+                </h2>
             </div>
             <div class="col-sm">
                 <h2 class="block-header-h2">Карточка группы</h2>
@@ -35,26 +37,25 @@
             <div class="row">
                 <div class="col-sm">
                     <ul>
-                        <li><a href="#student-profile">Иванов Иван Иванович</a></li>
-                        <li><a href="#student-profile">Иванов Иван Иванович</a></li>
-                        <li><a href="#student-profile">Иванов Иван Иванович</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#student-profile">Василевсов Василий Васильевич</a></li>
-                        <li><a href="#student-profile">Василевсов Василий Васильевич</a></li>
-                        <li><a href="#student-profile">Василевсов Василий Васильевич</a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="#student-profile">Гошин Гоша Гошанов</a></li>
-                        <li><a href="#student-profile">Гошин Гоша Гошанов</a></li>
-                        <li><a href="#student-profile">Гошин Гоша Гошанов</a></li>
+                        <?php
+                        $student_count = 0;
+                        //var_dump($group);die();
+                        foreach ($group->students as $student) {
+                            $student_count++;
+                            ?>
+                            <li><a href="#student-profile"><?= $student->first_name ?></a></li>
+                            <?php
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="col-sm">
-                    <h4>О группе</h4>
+                    <p>Количество учеников: <?= $student_count ?></p>
+                    <p>Номер: <?= $group->name ?></p>
+                    <a href="/backend-practice/group_subjects?id=<?= $_GET['id'] ?>">Изучаемые предметы</a>
                 </div>
                 <div class="col-sm">
-                    <h4>Выборка по предметам</h4>
+                    <h4>Предметы</h4>
                 </div>
             </div>
         </div>

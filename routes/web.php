@@ -10,10 +10,13 @@ Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup']);
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 Route::add('GET', '/subjects', [Controller\Site::class, 'subjects']); // Admin panel
-Route::add('GET', '/group_card', [Controller\Groups::class, 'group_card'])
+Route::add('GET', '/choose_course_groups', [Controller\Groups::class, 'chooseCourseGroups'])
     ->middleware('auth');
-Route::add('GET', '/groups_on_course', [Controller\Groups::class, 'groups_on_course'])
+
+Route::add('GET', '/groups_on_course', [Controller\Groups::class, 'groupsOnCourse'])
     ->middleware('auth');
-Route::add('GET', '/choose_course_groups', [Controller\Groups::class, 'choose_course_groups'])
+
+Route::add('GET', '/group_card', [Controller\Groups::class, 'groupCard'])
     ->middleware('auth');
+
 Route::add(['GET'],'/sum', [Controller\Site::class, 'sum']); // TEST
