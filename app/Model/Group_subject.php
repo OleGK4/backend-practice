@@ -11,4 +11,14 @@ class Group_subject extends Model
     use HasFactory;
     public $timestamps = false;
 
+    public function subjects(): HasMany // Одинаковые поля name, как решить?
+    {
+        return $this->hasMany(Subject::class);
+    }
+
+    public function groups(): HasMany // Одинаковые поля name, как решить?
+    {
+        return $this->hasMany(Group::class);
+    }
+
 }

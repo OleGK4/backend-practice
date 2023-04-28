@@ -1,5 +1,3 @@
-<!doctype html>
-<html lang="ru">
 <head>
     <title>Registration</title></head>
 <body>
@@ -17,7 +15,4 @@
         </form>
     </div>
 </div>
-</body>
-</html>
-
 <?php endif;

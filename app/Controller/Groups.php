@@ -11,12 +11,17 @@ use Src\Auth\Auth;
 
 class Groups
 {
+    public function chooseCourseGroups(): string
+    {
+        return (new View())->render('site.groups.choose_course_groups');
+
+    }
+
     public function groupsOnCourse(Request $request): string
     {
         if ($request->method === 'GET'){
 //            $_GET['course'] = 1;
-            $course = $_GET['course'];
-            $groups = Group::where('course', $course)->get();
+            $groups = Group::where('course', $_GET['course'])->get();
         }
 //        var_dump($groups->toArray());die();
 
@@ -26,15 +31,19 @@ class Groups
     public function groupCard(Request $request): string
     {
         if ($request->method === 'GET'){
-            $id = $_GET['id'];
-            $group = Group::where('id', $id)->first();
+            $group = Group::where('id', $_GET['id'])->first();
         }
         return (new View())->render('site.groups.group_card', ['group' => $group]);
     }
 
-    public function chooseCourseGroups(): string
+    public function groupEdit(): string
     {
-        return (new View())->render('site.groups.choose_course_groups');
+        return (new View())->render('site.groups.group_edit');
 
+    }
+
+    public function groupChooseSemester(): string
+    {
+        return (new View())->render('site.groups.group_choose_semester');
     }
 }

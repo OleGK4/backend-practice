@@ -1,13 +1,10 @@
-<!doctype html>
-<html lang="ru">
 <head>
     <title>Group card</title>
 </head>
-<body>
 <div class="d-flex justify-content-center">
     <div class="form-container" style="width: max-content; height: max-content">
         <div class="row">
-            <div class="col-sm">
+            <div class="col-sm" style="display:flex; flex-direction: row">
                 <h2 class="block-header-h2">Группа №</h2>
                 <h2 class="block-header-h2-yellow">
                     <?= $group->name; ?>
@@ -18,7 +15,7 @@
             </div>
             <div class="col-sm">
                 <button class="nav-bar-button">
-                    <a href="<?= app()->route->getUrl('/login') ?>">Редактировать</a>
+                    <a href="/group_edit?id=<?= $group->id ?>">Редактировать</a>
                 </button>
             </div>
         </div>
@@ -52,7 +49,7 @@
                 <div class="col-sm">
                     <p>Количество учеников: <?= $student_count ?></p>
                     <p>Номер: <?= $group->name ?></p>
-                    <a href="/backend-practice/group_subjects?id=<?= $_GET['id'] ?>">Изучаемые предметы</a>
+                    <a href="/group_choose_semester?group_id=<?= $_GET['id'] ?>">Изучаемые предметы</a>
                 </div>
                 <div class="col-sm">
                     <h4>Предметы</h4>
@@ -61,5 +58,3 @@
         </div>
     </div>
 </div>
-</body>
-</html>

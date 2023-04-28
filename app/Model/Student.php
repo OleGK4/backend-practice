@@ -10,5 +10,14 @@ class Student extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'last_name',
+        'first_name',
+        'patronymic',
+        'gender',
+        'date_of_birth',
+        'address',
+        'group_id'
+    ];
 
 }

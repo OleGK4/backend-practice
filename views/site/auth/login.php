@@ -1,11 +1,10 @@
-<!doctype html>
-<html lang="ru">
 <head>
-    <title>Login</title></head>
-<body>
+    <title>Login</title>
+</head>
 <div class="d-flex justify-content-center">
     <div class="form-container">
         <h2 class="block-header-h2">Регистрация/Вход</h2>
+        <h2 class="block-header-h2-yellow"><?= $message ?? ''; ?></h2>
         <?php
         if (!app()->auth::check()):
         ?>
@@ -16,7 +15,4 @@
         </form>
     </div>
 </div>
-</body>
-</html>
-
 <?php endif;

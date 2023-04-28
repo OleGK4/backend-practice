@@ -41,7 +41,7 @@ class Site
             app()->route->redirect('/todirect');
         }
         //Если аутентификация не удалась, то сообщение об ошибке
-        return new View('site.login', ['message' => 'Неправильные логин или пароль']);
+        return new View('site.auth.login', ['message' => 'Неправильные логин или пароль']);
     }
 
     public function logout(): void
