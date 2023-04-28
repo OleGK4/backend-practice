@@ -1,6 +1,6 @@
 .idea
 /vendor/
 /BootstrapPHP/
-/config
+/config/
 composer.lock
 composer.json
