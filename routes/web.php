@@ -5,12 +5,16 @@ use Src\Route;
 
 // Header
 Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup']);
+
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
+
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
+
 Route::add('GET', '/todirect', [Controller\Site::class, 'todirect'])
     ->middleware('auth');
+
 Route::add('GET', '/subjects', [Controller\Site::class, 'subjects']) // Admin panel
-    ->middleware('auth');
+->middleware('auth');
 
 
 // Group navigation
@@ -30,12 +34,9 @@ Route::add('GET', '/group_choose_semester', [Controller\Groups::class, 'groupCho
     ->middleware('auth');
 
 
-
-
 // Subject navigation
 Route::add('GET', '/group_subjects', [Controller\Groups::class, 'groupSubjects'])
     ->middleware('auth');
-
 
 
 // Student navigation
@@ -57,4 +58,7 @@ Route::add(['GET', 'POST'], '/success_edit', [Controller\Notifications::class, '
     ->middleware('auth');
 
 
-Route::add(['GET'],'/sum', [Controller\Site::class, 'sum']); // TEST
+// Other
+Route::add('GET', '/', [Controller\Site::class, 'todirect']);
+
+Route::add(['GET'], '/sum', [Controller\Site::class, 'sum']); // TEST
