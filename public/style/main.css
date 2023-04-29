@@ -3,19 +3,26 @@
     padding: 0;
     font-family: 'Ubuntu', sans-serif;
 }
+
 a {
     font-size: larger;
     text-align: center;
 }
 
+p, li, ul {
+    font-size: large;
+}
+
 a:hover {
     color: brown;
 }
+
 body {
     font-size: 14px;
-    width: 1920px;
+    width: auto;
     height: 1080px;
 }
+
 main {
     margin-top: 8%;
     display: flex;
@@ -23,17 +30,20 @@ main {
     justify-content: center;
     align-items: center;
 }
-header{
-    width: 1920px;
+
+header {
+    width: auto;
     height: auto;
     background-color: black;
 }
-.navbar{
+
+.navbar {
     width: 910px;
     height: auto;
     justify-content: center;
 }
-.nav-bar-button{
+
+.nav-bar-button {
     background-color: #FFE600;
     border-color: #FFE600;
     width: 150px;
@@ -41,12 +51,14 @@ header{
     margin-left: 10px;
     margin-right: 10px;
 }
+
 .nav-bar-button:hover {
     color: #212529;
     background-color: #e0a800;
     border-color: #d39e00;
 }
-.form-container{
+
+.form-container {
     width: 750px;
     height: 400px;
     background-color: black;
@@ -54,31 +66,41 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
-.container-header-2values{
+
+.container-header-2values {
     display: flex;
     flex-flow: row;
     justify-content: center;
     width: max-content;
 }
-.form-control, .btn-warning{
+
+.form-control, .btn-warning {
     border-radius: 0;
 }
-.block-header-h2{
+
+.block-header-h2 {
+    margin: 0;
     color: white;
     text-align: center;
 }
-.block-header-h2-yellow{
+
+.block-header-h2-yellow {
     color: #FFE600;
+    margin: 0;
 }
-.btn-warning{
+
+.h4-subheader-card-description {
+    text-align: center;
+}
+
+.btn-warning {
     background-color: #FFE600;
     border-color: #FFE600;
 }
-.col-sm{
-    padding: 20px;
-    width: max-content;
-    height: max-content;
+
+.row {
+    margin: 0;
+    padding: 5px;
 }
-
-

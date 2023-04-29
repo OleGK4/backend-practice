@@ -43,18 +43,27 @@ Route::add('GET', '/group_subjects', [Controller\Groups::class, 'groupSubjects']
 Route::add(['GET', 'POST'], '/student_add', [Controller\Students::class, 'studentAdd'])
     ->middleware('auth');
 
+Route::add('GET', '/student_card', [Controller\Students::class, 'studentCard'])
+    ->middleware('auth');
+
+Route::add(['GET', 'POST'], '/student_edit', [Controller\Students::class, 'studentEdit'])
+    ->middleware('auth');
+
+Route::add('GET', '/student_delete', [Controller\Students::class, 'studentDelete'])
+    ->middleware('auth');
+
 
 // Notifications
-Route::add(['GET', 'POST'], '/failed_input', [Controller\Notifications::class, 'failedInput'])
+Route::add('GET', '/failed_input', [Controller\Notifications::class, 'failedInput'])
     ->middleware('auth');
 
-Route::add(['GET', 'POST'], '/success_add', [Controller\Notifications::class, 'successAdd'])
+Route::add('GET', '/success_add', [Controller\Notifications::class, 'successAdd'])
     ->middleware('auth');
 
-Route::add(['GET', 'POST'], '/success_delete', [Controller\Notifications::class, 'successDelete'])
+Route::add('GET', '/success_delete', [Controller\Notifications::class, 'successDelete'])
     ->middleware('auth');
 
-Route::add(['GET', 'POST'], '/success_edit', [Controller\Notifications::class, 'successEdit'])
+Route::add('GET', '/success_edit', [Controller\Notifications::class, 'successEdit'])
     ->middleware('auth');
 
 
