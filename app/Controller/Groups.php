@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\Group;
+use Model\Group_subject;
 use Model\Post;
 use Src\View;
 use Src\Request;
@@ -45,5 +46,16 @@ class Groups
     public function groupChooseSemester(): string
     {
         return (new View())->render('site.groups.group_choose_semester');
+    }
+
+    public function groupSubjects(Request $request): string // BROKEN
+    {
+
+        $groupSubjects = Group_subject::where(['semester'=> $request->semester, 'group_id'=> $request->group_id])->get();
+
+//        var_dump($groupSubjects[0]->subject->name);
+//        var_dump($groupSubjects[0]->hours);
+
+        return (new View())->render('site.groups.group_subjects', ['groupsubjects' => $groupSubjects]);
     }
 }

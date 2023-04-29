@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Апр 29 2023 г., 03:39
--- Версия сервера: 8.0.30
--- Версия PHP: 8.1.9
+-- Хост: localhost
+-- Время создания: Апр 29 2023 г., 05:51
+-- Версия сервера: 10.3.28-MariaDB
+-- Версия PHP: 8.1.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `groups` (
-  `id` int NOT NULL COMMENT 'group id',
+  `id` int(11) NOT NULL COMMENT 'group id',
   `name` varchar(150) NOT NULL COMMENT 'group name',
-  `course` int NOT NULL COMMENT 'group course number'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `course` int(11) NOT NULL COMMENT 'group course number'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `groups`
@@ -48,18 +48,20 @@ INSERT INTO `groups` (`id`, `name`, `course`) VALUES
 --
 
 CREATE TABLE `group_subjects` (
-  `hours` int NOT NULL COMMENT 'Hours of subject for a group',
-  `subject_id` int NOT NULL COMMENT 'subject id',
-  `group_id` int NOT NULL COMMENT 'group id',
-  `semester` int NOT NULL COMMENT 'semester of studying the subject for specific group'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Subjects hours for group in choosen semester';
+  `hours` int(11) NOT NULL COMMENT 'Hours of subject for a group',
+  `subject_id` int(11) NOT NULL COMMENT 'subject id',
+  `group_id` int(11) NOT NULL COMMENT 'group id',
+  `semester` int(11) NOT NULL COMMENT 'semester of studying the subject for specific group'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Subjects hours for group in choosen semester';
 
 --
 -- Дамп данных таблицы `group_subjects`
 --
 
 INSERT INTO `group_subjects` (`hours`, `subject_id`, `group_id`, `semester`) VALUES
-(100, 1, 1, 4);
+(100, 1, 1, 4),
+(200, 2, 1, 2),
+(200, 3, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -68,14 +70,14 @@ INSERT INTO `group_subjects` (`hours`, `subject_id`, `group_id`, `semester`) VAL
 --
 
 CREATE TABLE `marks` (
-  `id` int NOT NULL COMMENT 'mark id',
+  `id` int(11) NOT NULL COMMENT 'mark id',
   `marks` varchar(150) NOT NULL COMMENT 'mark(s) of student for this lesson',
-  `student_id` int NOT NULL COMMENT 'student id',
-  `mark_control_id` int NOT NULL COMMENT 'id of mark control',
+  `student_id` int(11) NOT NULL COMMENT 'student id',
+  `mark_control_id` int(11) NOT NULL COMMENT 'id of mark control',
   `comment` varchar(150) NOT NULL COMMENT 'teachers comment for his mark',
-  `subject_id` int NOT NULL COMMENT 'subject id',
+  `subject_id` int(11) NOT NULL COMMENT 'subject id',
   `date` date NOT NULL COMMENT 'date of mark'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -84,9 +86,9 @@ CREATE TABLE `marks` (
 --
 
 CREATE TABLE `mark_control` (
-  `id` int NOT NULL COMMENT 'id of mark control type',
-  `name` int NOT NULL COMMENT 'name of mark control type'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Mark control types';
+  `id` int(11) NOT NULL COMMENT 'id of mark control type',
+  `name` int(11) NOT NULL COMMENT 'name of mark control type'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Mark control types';
 
 -- --------------------------------------------------------
 
@@ -95,15 +97,15 @@ CREATE TABLE `mark_control` (
 --
 
 CREATE TABLE `students` (
-  `id` int NOT NULL COMMENT 'student id',
+  `id` int(11) NOT NULL COMMENT 'student id',
   `last_name` varchar(150) NOT NULL COMMENT 'student last name',
   `first_name` varchar(150) NOT NULL COMMENT 'student first name',
   `patronymic` varchar(150) NOT NULL COMMENT 'student patronymic',
   `gender` varchar(150) NOT NULL COMMENT 'student gender',
   `date_of_birth` date NOT NULL COMMENT 'date of birth',
   `address` varchar(150) NOT NULL COMMENT 'address of student',
-  `group_id` int NOT NULL COMMENT 'id of the group'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Studens table';
+  `group_id` int(11) NOT NULL COMMENT 'id of the group'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Studens table';
 
 --
 -- Дамп данных таблицы `students`
@@ -115,7 +117,8 @@ INSERT INTO `students` (`id`, `last_name`, `first_name`, `patronymic`, `gender`,
 (3, 'qwe', 'qweqw', 'qweqw', 'qweqw', '2023-04-20', 'qwe', 2),
 (4, 'qwe', 'qweqw', 'qweqw', 'qweqw', '2023-04-20', 'qwe', 2),
 (8, 'lkjh', 'kljh', 'kljh', 'lkjhl', '1212-12-12', 'ghjfghjfhg', 1),
-(9, 'kJHlk', 'jhlkj', 'hlkj', 'hlkj', '1221-12-12', '12121dsf', 1);
+(9, 'kJHlk', 'jhlkj', 'hlkj', 'hlkj', '1221-12-12', '12121dsf', 1),
+(11, ',kjhsjh', 'lkjh', 'lkjh', 'lkjh', '1221-12-12', '12whlksdfkljh', 1);
 
 -- --------------------------------------------------------
 
@@ -124,16 +127,18 @@ INSERT INTO `students` (`id`, `last_name`, `first_name`, `patronymic`, `gender`,
 --
 
 CREATE TABLE `subjects` (
-  `id` int NOT NULL COMMENT 'subject id',
+  `id` int(11) NOT NULL COMMENT 'subject id',
   `name` varchar(150) NOT NULL COMMENT 'subject name'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `subjects`
 --
 
 INSERT INTO `subjects` (`id`, `name`) VALUES
-(1, 'Physics');
+(1, 'Physics'),
+(2, 'Mathematics'),
+(3, 'Chemestry');
 
 -- --------------------------------------------------------
 
@@ -142,9 +147,9 @@ INSERT INTO `subjects` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `subject_teachers` (
-  `subject_id` int NOT NULL COMMENT 'subject id',
-  `teacher_id` int NOT NULL COMMENT 'teacher id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table with subject teachers (many to many)';
+  `subject_id` int(11) NOT NULL COMMENT 'subject id',
+  `teacher_id` int(11) NOT NULL COMMENT 'teacher id'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Table with subject teachers (many to many)';
 
 -- --------------------------------------------------------
 
@@ -153,14 +158,14 @@ CREATE TABLE `subject_teachers` (
 --
 
 CREATE TABLE `teachers` (
-  `id` int NOT NULL COMMENT 'teacher id',
+  `id` int(11) NOT NULL COMMENT 'teacher id',
   `last_name` varchar(150) NOT NULL COMMENT 'teacher last name',
   `first_name` varchar(150) NOT NULL COMMENT 'teacher first name',
   `patronymic` varchar(150) NOT NULL COMMENT 'teacher patronymic',
   `gender` varchar(100) NOT NULL COMMENT 'teacher gender',
   `date_of_birth` date NOT NULL COMMENT 'date of birth',
   `address` varchar(150) NOT NULL COMMENT 'address of teacher'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -169,12 +174,12 @@ CREATE TABLE `teachers` (
 --
 
 CREATE TABLE `users` (
-  `id` int NOT NULL COMMENT 'user id',
+  `id` int(11) NOT NULL COMMENT 'user id',
   `login` varchar(150) NOT NULL COMMENT 'user login',
   `password` varchar(150) NOT NULL COMMENT 'user password',
-  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'admin or nor an admin',
+  `type` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'admin or nor an admin',
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Users table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Users table';
 
 --
 -- Дамп данных таблицы `users`
@@ -249,43 +254,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'group id', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'group id', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'mark id';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'mark id';
 
 --
 -- AUTO_INCREMENT для таблицы `mark_control`
 --
 ALTER TABLE `mark_control`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'id of mark control type';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id of mark control type';
 
 --
 -- AUTO_INCREMENT для таблицы `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'student id', AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'student id', AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'subject id', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'subject id', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'teacher id';
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'teacher id';
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'user id', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'user id', AUTO_INCREMENT=3;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

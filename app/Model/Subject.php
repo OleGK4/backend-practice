@@ -11,4 +11,8 @@ class Subject extends Model
     use HasFactory;
     public $timestamps = false;
 
+        public function semesters()
+    {
+        return $this->hasMany(Group_subject::class);
+    }
 }

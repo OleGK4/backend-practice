@@ -33,7 +33,7 @@ Route::add('GET', '/group_choose_semester', [Controller\Groups::class, 'groupCho
 
 
 // Subject navigation
-Route::add('GET', '/group_subjects', [Controller\Subjects::class, 'groupSubjects'])
+Route::add('GET', '/group_subjects', [Controller\Groups::class, 'groupSubjects'])
     ->middleware('auth');
 
 
