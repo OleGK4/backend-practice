@@ -54,10 +54,10 @@
                     <div class="col-md">
                         <p>Количество студентов: <?= $student_count ?></p>
                         <p>Номер: <?= $group->name ?></p>
-                        <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $_GET['id'] ?>">Изучаемые предметы</a>
+                        <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $group->id ?>">Изучаемые предметы</a>
                     </div>
                     <div class="col-md">
-                        <h4>Предметы</h4>
+                        <a href="<?= app()->route->getUrl('/student_all_subject_filter') ?>?group_id=<?= $group->id ?>&group_name=<?= $group->name ?>">По всем студентам</a>
                     </div>
                 </div>
             </div>

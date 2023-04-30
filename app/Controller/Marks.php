@@ -21,4 +21,10 @@ class Marks
 
         return (new View())->render('site.students.student_subject_filter', ['studentMarks' => $studentMarks]);
     }
+
+    public function allStudentsMarks(Request $request): string
+    {
+        $studentsMarks = Group::where(['id' => $request->group_id])->first();
+        return (new View())->render('site.students.student_all_subject_filter', ['studentsMarks' => $studentsMarks]);
+    }
 }
