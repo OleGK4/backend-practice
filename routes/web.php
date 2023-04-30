@@ -38,6 +38,9 @@ Route::add('GET', '/group_choose_semester', [Controller\Groups::class, 'groupCho
 Route::add('GET', '/group_subjects', [Controller\Groups::class, 'groupSubjects'])
     ->middleware('auth');
 
+Route::add('GET', '/students_subject_filter', [Controller\Marks::class, 'studentMarks'])
+    ->middleware('auth');
+
 
 // Student navigation
 Route::add(['GET', 'POST'], '/student_add', [Controller\Students::class, 'studentAdd'])
@@ -49,7 +52,10 @@ Route::add('GET', '/student_card', [Controller\Students::class, 'studentCard'])
 Route::add(['GET', 'POST'], '/student_edit', [Controller\Students::class, 'studentEdit'])
     ->middleware('auth');
 
-Route::add('GET', '/student_delete', [Controller\Students::class, 'studentDelete'])
+Route::add('GET', '/student_delete_confirm', [Controller\Students::class, 'studentDeleteConfirm'])
+    ->middleware('auth');
+
+Route::add('GET', '/student_delete', [Controller\Students::class, 'studentDelete']) // return 0
     ->middleware('auth');
 
 

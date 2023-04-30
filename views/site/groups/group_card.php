@@ -7,6 +7,7 @@
             <div class="row">
                 <div class="row">
                     <div class="col-sm">
+                        <h2 class="block-header-h2-yellow"><?= $message ?? ''; ?></h2>
                         <h2 class="block-header-h2" style="width: max-content">Группа №</h2>
                     </div>
                     <div class="col-sm">
@@ -27,7 +28,7 @@
             <div class="container" style="background-color: white; width: 1200px; height: max-content; padding: 20px">
                 <div class="row">
                     <div class="col-sm-4">
-                        <h4 class="h4-subheader-card-description">Ученики</h4>
+                        <h4 class="h4-subheader-card-description">Студенты</h4>
                     </div>
                     <div class="col-sm-4">
                         <h4 class="h4-subheader-card-description"> О группе</h4>
@@ -44,14 +45,14 @@
                             foreach ($group->students as $student) {
                                 $student_count++;
                                 ?>
-                                <li><a href="<?= app()->route->getUrl('/student_card') ?>?id=<?= $student->id ?>"> <?= $student->first_name .' '. $student->last_name .' '. $student->patronymic; ?></a></li>
+                                <li><a href="<?= app()->route->getUrl('/student_card') ?>?id=<?= $student->id ?>&group_id=<?= $group->id ?>"> <?= $student->first_name .' '. $student->last_name .' '. $student->patronymic; ?></a></li>
                                 <?php
                             }
                             ?>
                         </ul>
                     </div>
                     <div class="col-md">
-                        <p>Количество учеников: <?= $student_count ?></p>
+                        <p>Количество студентов: <?= $student_count ?></p>
                         <p>Номер: <?= $group->name ?></p>
                         <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $_GET['id'] ?>">Изучаемые предметы</a>
                     </div>

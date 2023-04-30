@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-">
                         <button class="nav-bar-button">
-                            <a href="<?= app()->route->getUrl('/student_delete') ?>?id=<?= $student->id ?>">Удалить</a>
+                            <a href="<?= app()->route->getUrl('/student_delete_confirm') ?>?student_id=<?= $student->id ?>&name=<?= $student->first_name .' '. $student->last_name .' '. $student->patronymic ?>&group_id=<?= $_GET['group_id'] ?>">Удалить</a>
                         </button>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         </ul>
                     </div>
                     <div class="col-md">
-                        <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $_GET['id'] ?>">Выборка по предметам</a>
+                        <a href="<?= app()->route->getUrl('/students_subject_filter') ?>?student_id=<?= $_GET['id'] ?>&name=<?= $student->first_name .' '. $student->last_name .' '. $student->patronymic ?>">Выборка по предметам</a>
                     </div>
                 </div>
             </div>

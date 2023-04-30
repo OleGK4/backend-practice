@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Subject extends Model
 {
+    protected $table = 'subjects';
     use HasFactory;
     public $timestamps = false;
 
-        public function semesters()
+        public function subject()
     {
-        return $this->hasMany(Group_subject::class);
+        return $this->hasOne(Group_subject::class);
+    }
+
+    public function marks()
+    {
+        return $this->hasMany(Mark::class);
     }
 }

@@ -20,4 +20,10 @@ class Student extends Model
         'group_id'
     ];
 
+    public function marks(): HasMany
+    {
+        return $this->hasMany(Mark::class);
+    }
+
+
 }

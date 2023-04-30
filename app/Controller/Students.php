@@ -14,7 +14,7 @@ class Students
     public function studentAdd(Request $request): string
     {
         if ($request->method === 'POST' && Student::create($request->all())) {
-            app()->route->redirect('/success_add');
+            app()->route->redirect('/group_card?id=' . $request->group_id);
         }
         return (new View())->render('site.students.student_add');
     }
@@ -35,5 +35,16 @@ class Students
         return (new View())->render('site.students.student_edit');
     }
 
+    public function studentDeleteConfirm(): string
+    {
+        return (new View())->render('site.students.student_delete_confirm');
+    }
 
+    public function studentDelete(Request $request): string
+    {
+        if ($request->method === 'GET' && Student::where('id', $request->id)->delete($request->id)) {
+            app()->route->redirect('/group_card?id=' . $request->group_id);
+        }
+        return (0);
+    }
 }

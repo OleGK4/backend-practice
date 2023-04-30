@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm">
                 <button class="nav-bar-button">
-                    <a href="<?= app()->route->getUrl('/student_add') ?>?group_id=<?= $_GET['id'] ?>">Добавить ученика</a>
+                    <a href="<?= app()->route->getUrl('/student_add') ?>?group_id=<?= $_GET['id'] ?>">Добавить студента</a>
                 </button>
             </div>
             <div class="col-sm">

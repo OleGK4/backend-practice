@@ -3,7 +3,7 @@
 </head>
 <div class="d-flex justify-content-center">
     <div class="form-container" style="height: max-content; padding: 20px">
-        <h2 class="block-header-h2">Новый ученик</h2>
+        <h2 class="block-header-h2">Новый студент</h2>
         <form method="post">
             <label><input type="text" class="form-control" required name="last_name" placeholder="Фамилия"></label><br>
             <label><input type="text" class="form-control" required name="first_name" placeholder="Имя"></label><br>
