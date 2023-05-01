@@ -9,7 +9,7 @@ class AdminMiddleware
 {
     public function handle(Request $request)
     {
-        // Если пользователь не админ, то редирект на страницу регистрации
+        // Если пользователь не админ, то редирект на страницу todirect
         if (!Auth::isAdmin()) {
             app()->route->redirect('/todirect');
         }
