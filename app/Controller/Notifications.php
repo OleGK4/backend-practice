@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Model\Group;
-use Model\Post;
 use Src\View;
 use Src\Request;
 use Model\User;

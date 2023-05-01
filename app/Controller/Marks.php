@@ -5,7 +5,6 @@ namespace Controller;
 use Model\Group;
 use Model\Group_subject;
 use Model\Mark;
-use Model\Post;
 use Src\View;
 use Src\Request;
 use Model\User;

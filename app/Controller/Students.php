@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Model\Post;
+
 use Model\Student;
 use Src\View;
 use Src\Request;

@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Model\Group_subject;
-use Model\Post;
 use Model\Student;
 use Src\View;
 use Src\Request;
