@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 30 2023 г., 19:20
+-- Время создания: Май 01 2023 г., 06:46
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -132,8 +132,8 @@ INSERT INTO `students` (`id`, `last_name`, `first_name`, `patronymic`, `gender`,
 (3, 'qwe', 'qweqw', 'qweqw', 'qweqw', '2023-04-20', 'qwe', 2),
 (4, 'qwe', 'qweqw', 'qweqw', 'qweqw', '2023-04-20', 'qwe', 2),
 (27, 'вщадпроывашрл', 'дилдо', 'рлор', 'лдор', '1232-12-12', 'жыдвлаопдылвао', 1),
-(28, 'длыворпдылваордло', 'длр', 'длр', 'длордлро', '1212-12-12', 'дулапрдылвароп', 1),
-(29, 'лоапр', 'длр', 'длор', 'длор', '1212-03-12', 'выапрвыап', 1);
+(29, 'лоапр', 'длр', 'длор', 'длор', '1212-03-12', 'выапрвыап', 1),
+(30, 'kjh', 'gkjhg', 'kjhg', 'kjhg', '1221-12-12', 'skjdhgkjsdfhg', 1);
 
 -- --------------------------------------------------------
 
@@ -158,33 +158,6 @@ INSERT INTO `subjects` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subject_teachers`
---
-
-CREATE TABLE `subject_teachers` (
-  `subject_id` int NOT NULL COMMENT 'subject id',
-  `teacher_id` int NOT NULL COMMENT 'teacher id'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table with subject teachers (many to many)';
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `teachers`
---
-
-CREATE TABLE `teachers` (
-  `id` int NOT NULL COMMENT 'teacher id',
-  `last_name` varchar(150) NOT NULL COMMENT 'teacher last name',
-  `first_name` varchar(150) NOT NULL COMMENT 'teacher first name',
-  `patronymic` varchar(150) NOT NULL COMMENT 'teacher patronymic',
-  `gender` varchar(100) NOT NULL COMMENT 'teacher gender',
-  `date_of_birth` date NOT NULL COMMENT 'date of birth',
-  `address` varchar(150) NOT NULL COMMENT 'address of teacher'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `users`
 --
 
@@ -202,7 +175,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `type`, `name`) VALUES
 (1, 'fatguy', '76d80224611fc919a5d54f0ff9fba446', 0, 'fatty'),
-(2, 'login', '1a1dc91c907325c69271ddf0c944bc72', 0, 'name');
+(2, 'login', '1a1dc91c907325c69271ddf0c944bc72', 1, 'name'),
+(3, 'user', '1a1dc91c907325c69271ddf0c944bc72', 0, 'user');
 
 --
 -- Индексы сохранённых таблиц
@@ -250,12 +224,6 @@ ALTER TABLE `subjects`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `teachers`
---
-ALTER TABLE `teachers`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -287,7 +255,7 @@ ALTER TABLE `mark_control`
 -- AUTO_INCREMENT для таблицы `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'student id', AUTO_INCREMENT=30;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'student id', AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
@@ -296,16 +264,10 @@ ALTER TABLE `subjects`
   MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'subject id', AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `teachers`
---
-ALTER TABLE `teachers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'teacher id';
-
---
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'user id', AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'user id', AUTO_INCREMENT=4;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
