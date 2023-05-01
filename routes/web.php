@@ -14,12 +14,12 @@ Route::add('GET', '/todirect', [Controller\Site::class, 'todirect'])
     ->middleware('auth');
 
 Route::add('GET', '/subjects', [Controller\Site::class, 'subjects']) // Admin panel
-->middleware('auth');
+    ->middleware('auth');
 
 
 // Group navigation
 Route::add('GET', '/choose_course_groups', [Controller\Groups::class, 'chooseCourseGroups'])
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::add('GET', '/groups_on_course', [Controller\Groups::class, 'groupsOnCourse'])
     ->middleware('auth');

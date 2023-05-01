@@ -51,6 +51,17 @@ class Auth
         return false;
     }
 
+    // Возвращает true, если пользователь админ
+    public static function isAdmin(): bool
+    {
+        if (self::check()) {
+            echo 'SUPER!';
+            return self::user()->getType();
+        }
+        return false;
+    }
+
+
     //Выход текущего пользователя
     public static function logout(): bool
     {

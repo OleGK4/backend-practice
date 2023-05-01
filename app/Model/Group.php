@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 class Group extends Model
 {
     use HasFactory;
+
     public $timestamps = false;
 
 
