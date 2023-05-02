@@ -10,7 +10,11 @@ class SameValidator extends AbstractValidator
 {
 
     protected string $message = 'Password are not the same';
+//    $value1
 
+
+
+//    $value2
     public function rule(Request $request): bool
     {
         if ($request->get(['confirm_password' == 'password'])){
