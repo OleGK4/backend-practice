@@ -12,7 +12,7 @@
             </div>
             <div class="col-sm">
                 <button class="nav-bar-button">
-                    <a href="<?= app()->route->getUrl('/signup') ?>">Добавить предметы</a>
+                    <a href="<?= app()->route->getUrl('/group_add_subjects')?>?group_id=<?= $_GET['id'] ?>">Добавить предметы</a>
                 </button>
             </div>
         </div>

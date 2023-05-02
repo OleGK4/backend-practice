@@ -42,10 +42,4 @@ class Groups
         return (new View())->render('site.groups.group_choose_semester');
     }
 
-    public function groupSubjects(Request $request): string // BROKEN
-    {
-
-        $groupSubjects = Group_subject::where(['semester' => $request->semester, 'group_id' => $request->group_id])->get();
-        return (new View())->render('site.groups.group_subjects', ['groupsubjects' => $groupSubjects]);
-    }
 }

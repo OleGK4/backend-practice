@@ -35,13 +35,16 @@ Route::add('GET', '/group_choose_semester', [Controller\Groups::class, 'groupCho
 
 
 // Subject navigation
-Route::add('GET', '/group_subjects', [Controller\Groups::class, 'groupSubjects'])
+Route::add('GET', '/group_subjects', [Controller\Subjects::class, 'groupSubjects'])
     ->middleware('auth');
 
 Route::add('GET', '/students_subject_filter', [Controller\Marks::class, 'studentMarks'])
     ->middleware('auth');
 
 Route::add('GET', '/student_all_subject_filter', [Controller\Marks::class, 'allStudentsMarks'])
+    ->middleware('auth');
+
+Route::add(['GET', 'POST'],'/group_add_subjects', [Controller\Subjects::class, 'groupAddSubjects'])
     ->middleware('auth');
 
 
