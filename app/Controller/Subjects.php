@@ -18,19 +18,18 @@ class Subjects
 
     public function groupAddSubjects(Request $request): string
     {
+        // If request to view the form
         if ($request->method === 'GET') {
             $subjects = Subject::all();
             return new View('site.groups.group_add_subjects', ['subjects' => $subjects]);
         }
 
+        // Request to choose the subjects
         elseif ($request->method === 'POST' && !empty($request->get('id')[0])) {
             $choosen = Subject::whereIn('id', $request->id)->get();
-
-//            var_dump($request->id);
-//            var_dump($choosen->toarray());
             return new View('site.groups.group_confirm_subjects', ['choosen' => $choosen, 'group_id' => $request->group_id]);
         }
-
+        // If subject_id exists => get data from request
         elseif ($request->method === 'POST' && !empty($request->get('subject_id')[0])) {
 
             $semesters = $request->get('semester');
@@ -38,6 +37,7 @@ class Subjects
             $subjects = $request->get('subject_id');
             $group_id = $request->get('group_id');
 
+            // Loop to make an array, that contains arrays of subjects
             $data = [];
             foreach ($subjects as $key => $subject) {
                 $data[] = [
@@ -48,6 +48,8 @@ class Subjects
                 ];
             }
 
+            // Counting amount of inner arrays in $data,
+            // looping until < than count
             $dataCount = count($data);
             for($i=0; $i<($dataCount); $i++){
                 if ($request->method === 'POST' && Group_subject::create($data[$i])) {
