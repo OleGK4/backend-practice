@@ -15,7 +15,7 @@
                                           value="<?= $subject->name ?>"></label><br>
                         </div>
                         <div class="col-sm">
-                            <label><input type="checkbox" class="form-control" name="subject_id[]"
+                            <label><input type="checkbox" class="form-control" name="id[]"
                                           value="<?= $subject->id ?>"></label><br>
                         </div>
                     </div>

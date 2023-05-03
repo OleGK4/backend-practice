@@ -29,7 +29,26 @@ class Students
 
     public function studentEdit(Request $request): string
     {
-        if ($request->method === 'POST' && Student::where('id', $request->id)->update($request->all())) {
+
+        $id = $request->get('id');
+        $last_name = $request->get('last_name');
+        $first_name = $request->get('first_name');
+        $patronymic = $request->get('patronymic');
+        $gender = $request->get('gender');
+        $date_of_birth = $request->get('date_of_birth');
+        $address = $request->get('address');
+
+        $data[] = [
+            'id' => $id,
+            'last_name' => $last_name,
+            'first_name' => $first_name,
+            'patronymic' => $patronymic,
+            'gender' => $gender,
+            'date_of_birth' => $date_of_birth,
+            'address' => $address,
+        ];
+
+        if ($request->method === 'POST' && Student::where('id', $request->id)->update($data[0])) {
             app()->route->redirect('/student_card?id=' . $request->id);
         }
         return (new View())->render('site.students.student_edit');

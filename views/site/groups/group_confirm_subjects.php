@@ -13,9 +13,9 @@ $_GET['group_id'] = $group_id;
                 foreach ($choosen as $subject){?>
                     <div class="row">
                         <div class="col-sm-">
+                            <label><input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/></label>
                             <label><input type="text" class="form-control" disabled value="<?= $subject->name ?>"></label><br>
                             <label><input type="number" name="subject_id[]" hidden value="<?= $subject->id ?>"></label>
-                            <label><input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/></label>
                         </div>
                         <div class="col-sm">
                             <label><input type="number" class="form-control" placeholder="Семестр" name="semester[]"></label><br>

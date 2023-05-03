@@ -9,6 +9,7 @@ return [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class,
         'same' => \Validators\SameValidator::class,
+        'number' => \Validators\NumberValidator::class,
     ],
     //Классы для middleware
     'routeMiddleware' => [

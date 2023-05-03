@@ -12,6 +12,12 @@ class Group_subject extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $fillable = [
+        'hours',
+        'subject_id',
+        'group_id',
+        'semester',
+    ];
 
     public function subject(): BelongsTo // Одинаковые поля name, как решить?
     {
