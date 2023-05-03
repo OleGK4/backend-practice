@@ -8,8 +8,8 @@ return [
     'validators' => [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class,
-        'same' => \Validators\SameValidator::class,
         'number' => \Validators\NumberValidator::class,
+        'notnumber' => \Validators\NotNumberValidator::class,
     ],
     //Классы для middleware
     'routeMiddleware' => [

@@ -65,21 +65,7 @@ Route::add('GET', '/student_delete', [Controller\Students::class, 'studentDelete
 ->middleware('auth');
 
 
-// Notifications
-Route::add('GET', '/failed_input', [Controller\Notifications::class, 'failedInput'])
-    ->middleware('auth');
-
-Route::add('GET', '/success_add', [Controller\Notifications::class, 'successAdd'])
-    ->middleware('auth');
-
-Route::add('GET', '/success_delete', [Controller\Notifications::class, 'successDelete'])
-    ->middleware('auth');
-
-Route::add('GET', '/success_edit', [Controller\Notifications::class, 'successEdit'])
-    ->middleware('auth');
 
 
 // Other
 Route::add('GET', '/', [Controller\Site::class, 'todirect']);
-
-Route::add(['GET'], '/sum', [Controller\Site::class, 'sum']); // TEST

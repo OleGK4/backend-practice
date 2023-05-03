@@ -4,6 +4,7 @@ namespace Controller;
 
 
 use Model\Student;
+use Src\Validator\Validator;
 use Src\View;
 use Src\Request;
 use Model\User;
@@ -14,6 +15,24 @@ class Students
     public function studentAdd(Request $request): string
     {
         if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), [
+                'last_name' => ['required', 'notnumber'],
+                'first_name' => ['required', 'notnumber'],
+                'patronymic' => ['required', 'notnumber'],
+                'gender' => ['required', 'notnumber'],
+                'date_of_birth' => ['required'],
+                'address' => ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'notnumber' => 'Поле :field не должно быть цифрой!',
+            ]);
+
+            if($validator->fails()){
+                return new View('site.auth.signup',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
             $last_name = $request->get('last_name');
             $first_name = $request->get('first_name');
             $patronymic = $request->get('patronymic');
@@ -52,6 +71,25 @@ class Students
     public function studentEdit(Request $request): string
     {
         if ($request->method === 'POST'){
+
+            $validator = new Validator($request->all(), [
+                'last_name' => ['required', 'notnumber'],
+                'first_name' => ['required', 'notnumber'],
+                'patronymic' => ['required', 'notnumber'],
+                'gender' => ['required', 'notnumber'],
+                'date_of_birth' => ['required'],
+                'address' => ['required'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'notnumber' => 'Поле :field не должно быть цифрой!',
+            ]);
+
+            if($validator->fails()){
+                return new View('site.auth.signup',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+
             $id = $request->get('id');
             $last_name = $request->get('last_name');
             $first_name = $request->get('first_name');

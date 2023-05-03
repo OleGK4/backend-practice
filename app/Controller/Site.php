@@ -12,13 +12,6 @@ use Src\Validator\Validator;
 
 class Site
 {
-
-    public function index(Request $request): string
-    {
-        $posts = Post::where('id', $request->id)->get();
-        return (new View())->render('site.post', ['posts' => $posts]);
-    }
-
     public function todirect(): string
     {
         return (new View())->render('site.todirect');
@@ -32,9 +25,7 @@ class Site
                 'name' => ['required'],
                 'login' => ['required', 'unique:users,login'],
                 'password' => ['required'],
-                'password_confirm' => ['required', 'same:password']
             ], [
-                'confirmed' => 'Поля паролей должны совпадать',
                 'required' => 'Поле :field пусто',
                 'unique' => 'Поле :field должно быть уникально'
             ]);
@@ -76,13 +67,5 @@ class Site
     public function hello(): string
     {
         return new View('site.hello', ['message' => 'hello working']);
-    }
-
-    public function sum(): void // TEST
-    {
-        $i = 2;
-        $i2 = 2;
-        $sum = $i * $i2;
-        echo 'sum = ' . $sum;
     }
 }
