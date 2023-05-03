@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-">
                         <button class="nav-bar-button">
-                            <a href="<?= app()->route->getUrl('/student_edit') ?>?id=<?= $student->id ?>">Редактировать</a>
+                            <a href="<?= app()->route->getUrl('/student_edit') ?>?id=<?= $student->id ?>&name=<?= $student->first_name .' '. $student->last_name .' '. $student->patronymic ?>&group_id=<?= $_GET['group_id'] ?>">Редактировать</a>
                         </button>
                     </div>
                     <div class="col-">
