@@ -42,4 +42,12 @@ class Groups
         return (new View())->render('site.groups.group_choose_semester');
     }
 
+    public function groupDelete(Request $request): string
+    {
+        if($request->method === 'GET' && Group::where('id', $request->group_id)->delete()){
+            app()->route->redirect('/choose_course_groups');
+            }
+        return 0;
+    }
+
 }

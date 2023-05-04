@@ -54,6 +54,7 @@
                     <div class="col-md">
                         <p>Количество студентов: <?= $student_count ?></p>
                         <p>Номер: <?= $group->name ?></p>
+                        <p>Курс: <?= $group->course ?></p>
                         <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $group->id ?>">Изучаемые предметы</a>
                     </div>
                     <div class="col-md">

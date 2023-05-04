@@ -33,6 +33,9 @@ Route::add('GET', '/group_edit', [Controller\Groups::class, 'groupEdit'])
 Route::add('GET', '/group_choose_semester', [Controller\Groups::class, 'groupChooseSemester'])
     ->middleware('auth');
 
+Route::add('GET', '/group_delete', [Controller\Groups::class, 'groupDelete'])
+    ->middleware('auth');
+
 
 // Subject navigation
 Route::add('GET', '/group_subjects', [Controller\Subjects::class, 'groupSubjects'])
@@ -45,6 +48,9 @@ Route::add('GET', '/student_all_subject_filter', [Controller\Marks::class, 'allS
     ->middleware('auth');
 
 Route::add(['GET', 'POST'],'/group_add_subjects', [Controller\Subjects::class, 'groupAddSubjects'])
+    ->middleware('auth');
+
+Route::add(['GET', 'POST'],'/group_delete_subjects', [Controller\Subjects::class, 'groupDeleteSubjects'])
     ->middleware('auth');
 
 

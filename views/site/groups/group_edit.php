@@ -19,12 +19,12 @@
         <div class="row" style="margin-top: 30px">
             <div class="col-sm">
                 <button class="nav-bar-button">
-                    <a href="<?= app()->route->getUrl('/signup') ?>">Удалить группу</a>
+                    <a href="<?= app()->route->getUrl('/group_delete') ?>?group_id=<?= $_GET['id'] ?>">Удалить группу</a>
                 </button>
             </div>
             <div class="col-sm">
                 <button class="nav-bar-button">
-                    <a href="<?= app()->route->getUrl('/signup') ?>">Удалить предметы</a>
+                    <a href="<?= app()->route->getUrl('/group_delete_subjects') ?>?group_id=<?= $_GET['id'] ?>">Удалить предметы</a>
                 </button>
             </div>
         </div>
