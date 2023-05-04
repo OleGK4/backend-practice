@@ -46,7 +46,8 @@ class Subjects
             }
 
             // Counting amount of inner arrays in $data,
-            // looping until < than count
+            // looping until $i < than count
+            // $i is an array key to get an element ***
             $dataCount = count($data);
             for ($i = 0; $i < ($dataCount); $i++) {
                 if ($request->method === 'POST' && Group_subject::create($data[$i])) {
