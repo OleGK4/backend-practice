@@ -45,7 +45,9 @@
                             foreach ($group->students as $student) {
                                 $student_count++;
                                 ?>
-                                <li><a href="<?= app()->route->getUrl('/student_card') ?>?id=<?= $student->id ?>&group_id=<?= $group->id ?>"> <?= $student->first_name .' '. $student->last_name .' '. $student->patronymic; ?></a></li>
+                                <li>
+                                    <a href="<?= app()->route->getUrl('/student_card') ?>?id=<?= $student->id ?>&group_id=<?= $group->id ?>"> <?= $student->first_name . ' ' . $student->last_name . ' ' . $student->patronymic; ?></a>
+                                </li>
                                 <?php
                             }
                             ?>
@@ -55,13 +57,33 @@
                         <p>Количество студентов: <?= $student_count ?></p>
                         <p>Номер: <?= $group->name ?></p>
                         <p>Курс: <?= $group->course ?></p>
-                        <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $group->id ?>">Изучаемые предметы</a>
+                        <a href="<?= app()->route->getUrl('/group_choose_semester') ?>?group_id=<?= $group->id ?>">Изучаемые
+                            предметы</a>
                     </div>
+
                     <div class="col-md">
-                        <a href="<?= app()->route->getUrl('/student_all_subject_filter') ?>?group_id=<?= $group->id ?>&group_name=<?= $group->name ?>">По всем студентам</a>
+                        <a href="<?= app()->route->getUrl('/student_all_subject_filter') ?>?group_id=<?= $group->id ?>&group_name=<?= $group->name ?>">По
+                            всем студентам</a>
                     </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col-md">-->
+<!---->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md">-->
+<!--                                <a href="--><?//= app()->route->getUrl('/group_edit') ?><!--?id=--><?//= $group->id ?><!--">Картинка-->
+<!--                                    группы</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md">-->
+<!--                                <img src="/public/assets/files" alt="group image"-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
