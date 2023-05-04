@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Май 03 2023 г., 06:59
--- Версия сервера: 10.3.28-MariaDB
--- Версия PHP: 8.1.14
+-- Хост: 127.0.0.1:3306
+-- Время создания: Май 04 2023 г., 14:04
+-- Версия сервера: 8.0.30
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `groups` (
-  `id` int(11) NOT NULL COMMENT 'group id',
+  `id` int NOT NULL COMMENT 'group id',
   `name` varchar(150) NOT NULL COMMENT 'group name',
-  `course` int(11) NOT NULL COMMENT 'group course number'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `course` int NOT NULL COMMENT 'group course number'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `groups`
@@ -48,11 +48,11 @@ INSERT INTO `groups` (`id`, `name`, `course`) VALUES
 --
 
 CREATE TABLE `group_subjects` (
-  `hours` int(11) DEFAULT NULL COMMENT 'Hours of subject for a group',
-  `subject_id` int(11) NOT NULL COMMENT 'subject id',
-  `group_id` int(11) NOT NULL COMMENT 'group id',
-  `semester` int(11) NOT NULL COMMENT 'semester of studying the subject for specific group'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Subjects hours for group in choosen semester';
+  `hours` int DEFAULT NULL COMMENT 'Hours of subject for a group',
+  `subject_id` int NOT NULL COMMENT 'subject id',
+  `group_id` int NOT NULL COMMENT 'group id',
+  `semester` int NOT NULL COMMENT 'semester of studying the subject for specific group'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Subjects hours for group in choosen semester';
 
 --
 -- Дамп данных таблицы `group_subjects`
@@ -63,10 +63,8 @@ INSERT INTO `group_subjects` (`hours`, `subject_id`, `group_id`, `semester`) VAL
 (200, 2, 1, 2),
 (200, 3, 1, 4),
 (100, 3, 1, 1),
-(345, 3, 1, 8),
-(346, 1, 1, 8),
-(232, 2, 1, 8),
-(2342, 3, 1, 8);
+(543, 1, 1, 8),
+(1432, 1, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -75,14 +73,23 @@ INSERT INTO `group_subjects` (`hours`, `subject_id`, `group_id`, `semester`) VAL
 --
 
 CREATE TABLE `marks` (
-  `id` int(11) NOT NULL COMMENT 'mark id',
-  `mark` int(11) NOT NULL COMMENT 'mark(s) of student for this lesson',
-  `student_id` int(11) NOT NULL COMMENT 'student id',
-  `mark_control_id` int(11) NOT NULL COMMENT 'id of mark control',
+  `id` int NOT NULL COMMENT 'mark id',
+  `mark` int NOT NULL COMMENT 'mark(s) of student for this lesson',
+  `student_id` int NOT NULL COMMENT 'student id',
+  `mark_control_id` int NOT NULL COMMENT 'id of mark control',
   `comment` varchar(150) DEFAULT 'Комментарий' COMMENT 'teachers comment for his mark',
-  `subject_id` int(11) NOT NULL COMMENT 'subject id',
+  `subject_id` int NOT NULL COMMENT 'subject id',
   `date` date NOT NULL COMMENT 'date of mark'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `marks`
+--
+
+INSERT INTO `marks` (`id`, `mark`, `student_id`, `mark_control_id`, `comment`, `subject_id`, `date`) VALUES
+(3, 3, 29, 1, 'Вот', 1, '2023-05-02'),
+(4, 4, 30, 1, 'Комментарий', 3, '2023-05-27'),
+(5, 5, 30, 2, 'Такой', 2, '2023-05-01');
 
 -- --------------------------------------------------------
 
@@ -91,9 +98,9 @@ CREATE TABLE `marks` (
 --
 
 CREATE TABLE `mark_control` (
-  `id` int(11) NOT NULL COMMENT 'id of mark control type',
+  `id` int NOT NULL COMMENT 'id of mark control type',
   `name` varchar(255) NOT NULL COMMENT 'name of mark control type'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Mark control types';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Mark control types';
 
 --
 -- Дамп данных таблицы `mark_control`
@@ -110,15 +117,15 @@ INSERT INTO `mark_control` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `students` (
-  `id` int(11) NOT NULL COMMENT 'student id',
+  `id` int NOT NULL COMMENT 'student id',
   `last_name` varchar(150) NOT NULL COMMENT 'student last name',
   `first_name` varchar(150) NOT NULL COMMENT 'student first name',
   `patronymic` varchar(150) NOT NULL COMMENT 'student patronymic',
   `gender` varchar(150) NOT NULL COMMENT 'student gender',
   `date_of_birth` date NOT NULL COMMENT 'date of birth',
   `address` varchar(150) NOT NULL COMMENT 'address of student',
-  `group_id` int(11) NOT NULL COMMENT 'id of the group'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Studens table';
+  `group_id` int NOT NULL COMMENT 'id of the group'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Studens table';
 
 --
 -- Дамп данных таблицы `students`
@@ -128,7 +135,11 @@ INSERT INTO `students` (`id`, `last_name`, `first_name`, `patronymic`, `gender`,
 (3, 'qwe', 'qweqw', 'qweqw', 'qweqw', '2023-04-20', 'qwe', 2),
 (4, 'qwe', 'qweqw', 'qweqw', 'qweqw', '2023-04-20', 'qwe', 2),
 (29, 'gdfas', 'gfds', 'gsd', 'gfds', '1211-12-12', 'ghsd', 1),
-(30, 'kjh', 'gkjhg', 'kjhg', 'kjhg', '1221-12-12', 'skjdhgkjsdfhg', 1);
+(30, 'kjh', 'gkjhg', 'kjhg', 'kjhg', '1221-12-12', 'skjdhgkjsdfhg', 1),
+(31, 'вапрвпа', 'апрпа12', 'вапрпва', 'вапра', '1111-11-11', 'апврвап', 1),
+(32, 'sdfgsdf21', 'fdghdfgh', 'dfghdfg', 'dfghdfg', '1111-11-11', 'gfhdfg', 1),
+(33, '213dfgh', 'dfgh', 'lkjh', 'klghj', '1111-11-11', 'lklkjh', 1),
+(34, 'kljh', 'hjklkl', 'jh', 'lkjh', '1111-11-11', 'kljhlkjh', 1);
 
 -- --------------------------------------------------------
 
@@ -137,9 +148,9 @@ INSERT INTO `students` (`id`, `last_name`, `first_name`, `patronymic`, `gender`,
 --
 
 CREATE TABLE `subjects` (
-  `id` int(11) NOT NULL COMMENT 'subject id',
+  `id` int NOT NULL COMMENT 'subject id',
   `name` varchar(150) NOT NULL COMMENT 'subject name'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `subjects`
@@ -157,12 +168,12 @@ INSERT INTO `subjects` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL COMMENT 'user id',
+  `id` int NOT NULL COMMENT 'user id',
   `login` varchar(150) NOT NULL COMMENT 'user login',
   `password` varchar(150) NOT NULL COMMENT 'user password',
-  `type` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'admin or nor an admin',
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'admin or nor an admin',
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Users table';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Users table';
 
 --
 -- Дамп данных таблицы `users`
@@ -232,37 +243,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'group id', AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'group id', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `marks`
 --
 ALTER TABLE `marks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'mark id', AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'mark id', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `mark_control`
 --
 ALTER TABLE `mark_control`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id of mark control type', AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'id of mark control type', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'student id', AUTO_INCREMENT=31;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'student id', AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'subject id', AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'subject id', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'user id', AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT COMMENT 'user id', AUTO_INCREMENT=5;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
