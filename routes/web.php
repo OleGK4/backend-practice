@@ -24,7 +24,7 @@ Route::add('GET', '/choose_course_groups', [Controller\Groups::class, 'chooseCou
 Route::add('GET', '/groups_on_course', [Controller\Groups::class, 'groupsOnCourse'])
     ->middleware('auth');
 
-Route::add('GET', '/group_card', [Controller\Groups::class, 'groupCard'])
+Route::add(['GET', 'POST'], '/group_card', [Controller\Groups::class, 'groupCard'])
     ->middleware('auth');
 
 Route::add('GET', '/group_edit', [Controller\Groups::class, 'groupEdit'])
@@ -34,6 +34,9 @@ Route::add('GET', '/group_choose_semester', [Controller\Groups::class, 'groupCho
     ->middleware('auth');
 
 Route::add('GET', '/group_delete', [Controller\Groups::class, 'groupDelete'])
+    ->middleware('auth');
+
+Route::add(['GET', 'POST'], '/group_change_image', [Controller\Groups::class, 'groupChangeImage'])
     ->middleware('auth');
 
 
