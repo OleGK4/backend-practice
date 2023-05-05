@@ -84,7 +84,7 @@ class Groups
         if($request->method === 'POST' && !empty($_FILES)){
             if ($_FILES) {
                 if (move_uploaded_file($_FILES['filename']['tmp_name'],
-                    $_SERVER['DOCUMENT_ROOT'] .'/backend-practice/public/images/' . $_FILES['filename']['name'])) {
+                    $_SERVER['DOCUMENT_ROOT'] .'/public/images/' . $_FILES['filename']['name'])) {
                     echo 'Файл успешно загружен';
 
                     $fileName[] = [
