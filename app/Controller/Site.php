@@ -7,7 +7,7 @@ use Src\View;
 use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
-use Src\Validator\Validator;
+use Validator\Validator;;
 
 
 class Site
@@ -24,7 +24,7 @@ class Site
             $validator = new Validator($request->all(), [
                 'name' => ['required'],
                 'login' => ['required', 'unique:users,login'],
-                'password' => ['required'],
+                'password' => ['required']
             ], [
                 'required' => 'Поле :field пусто',
                 'unique' => 'Поле :field должно быть уникально'
@@ -41,6 +41,8 @@ class Site
         }
         return new View('site.auth.signup');
     }
+
+
 
 
 

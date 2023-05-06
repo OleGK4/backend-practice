@@ -2,7 +2,8 @@
 
 namespace Validators;
 
-use Src\Validator\AbstractValidator;
+use Validator\AbstractValidator;
+use Validator\Validator;
 
 class RequireValidator extends AbstractValidator
 {
