@@ -15,7 +15,8 @@ class User extends Model implements IdentityInterface
         'name',
         'login',
         'password',
-        'type'
+        'type',
+        'token',
     ];
 
     protected static function booted()
@@ -49,6 +50,16 @@ class User extends Model implements IdentityInterface
     public function getType(): bool
     {
         return $this->type;
+    }
+
+    public function getToken()
+    {
+        if(app()->auth::user()->token){
+            $token = app()->auth::user()->token;
+        }else{
+            $token = null;
+        }
+        return $token;
     }
 
 }

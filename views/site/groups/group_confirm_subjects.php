@@ -18,7 +18,17 @@ $_GET['group_id'] = $group_id;
                             <label><input type="number" name="subject_id[]" hidden value="<?= $subject->id ?>"></label>
                         </div>
                         <div class="col-sm">
-                            <label><input type="number" class="form-control" placeholder="Семестр" name="semester[]"></label><br>
+                            <label for="semesters" class="form-control">Семестр изучения</label>
+                                <select class="form-control" id="semesters" name="semester[]">
+                                    <option class="form-control" value="1">1</option>
+                                    <option class="form-control" value="2">2</option>
+                                    <option class="form-control" value="3">3</option>
+                                    <option class="form-control" value="4">4</option>
+                                    <option class="form-control" value="5">5</option>
+                                    <option class="form-control" value="6">6</option>
+                                    <option class="form-control" value="7">7</option>
+                                    <option class="form-control" value="8">8</option>
+                                </select><br>
                         </div>
                         <div class="col-sm">
                             <label><input type="number" class="form-control" placeholder="Часы" name="hours[]"></label><br>

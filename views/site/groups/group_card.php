@@ -1,6 +1,5 @@
 <?php
-
-var_dump($_SERVER['DOCUMENT_ROOT']);
+echo($_SERVER['DOCUMENT_ROOT']);
 ?>
 
 <head>
