@@ -1,3 +1,8 @@
+<?php
+
+var_dump($_SERVER['DOCUMENT_ROOT']);
+?>
+
 <head>
     <title>Group card</title>
 </head>
@@ -78,7 +83,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md">
-                                <img style="width: 200px" src="/backend-practice/public/images/<?= $group->image ?>" alt="group image"
+                                <img style="width: 200px" src="/public/images/<?= $group->image ?>" alt="group image"
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ use Model\Group_subject;
 use Model\Student;
 use Src\Request;
 use Src\View;
+use function Collect\collection;
 
 class Groups
 {
@@ -26,7 +27,7 @@ class Groups
 
     public function groupCard(Request $request): string
     {
-        if (!empty($request->get('search'))) {
+        if ($request->method === 'POST' && !empty($request->get('search'))) {
 
             $group_id = $request->get('id');
             $search = $request->get('search');
@@ -80,7 +81,7 @@ class Groups
         if($request->method === 'POST' && !empty($_FILES)){
             if ($_FILES) {
                 if (move_uploaded_file($_FILES['filename']['tmp_name'],
-                    $_SERVER['DOCUMENT_ROOT'] .'/backend-practice/public/images/' . $_FILES['filename']['name'])) {
+                    $_SERVER['DOCUMENT_ROOT'] .'/public/images/' . $_FILES['filename']['name'])) {
                     echo 'Файл успешно загружен';
 
                     $fileName[] = [
