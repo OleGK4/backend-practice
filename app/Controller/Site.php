@@ -23,11 +23,12 @@ class Site
 
             $validator = new Validator($request->all(), [
                 'name' => ['required'],
-                'login' => ['required', 'unique:users,login'],
-                'password' => ['required']
+                'login' => ['required', 'notnumber', 'unique:users,login'],
+                'password' => ['required', 'notnumber']
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'notnumber' => 'Поле :field не должно быть цифрой!',
             ]);
 
             if($validator->fails()){

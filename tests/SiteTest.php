@@ -44,7 +44,6 @@ class SiteTest extends TestCase
     }
 
 
-
 //Метод, возвращающий набор тестовых данных
     public function additionProvider(): array
     {
@@ -57,6 +56,12 @@ class SiteTest extends TestCase
             ],
             ['POST', ['name' => 'admin', 'login' => 'login is busy', 'password' => 'admin'],
                 '<h3>{"login":["Поле login должно быть уникально"]}</h3>',
+            ],
+            ['POST', ['name' => 'justname', 'login' => '32123', 'password' => ''],
+                '<h3>{"login":["Поле login не должно быть цифрой!"],"password":["Поле password пусто"]}</h3>',
+            ],
+            ['POST', ['name' => 'justname', 'login' => '', 'password' => '252345243'],
+                '<h3>{"login":["Поле login пусто"],"password":["Поле password не должно быть цифрой!"]}</h3>',
             ],
             ['POST', ['name' => 'admin', 'login' => md5(time()), 'password' => 'admin'],
                 'Location: /backend-practice/todirect',
